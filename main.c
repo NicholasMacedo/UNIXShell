@@ -1,9 +1,7 @@
-/*
-main.c: Main function of the shell and calls the main shell function.
-Student Name: Nicholas Macedo
-Student ID: nmacedov
-Student Number: 0889469
-*/ 
+/*************************main.c****************************************
+Student Name: Nicholas Macedo                  Student Number:
+Date: October 5th 2016                         Course Name: CIS 3110
+****************************************************************************/
 #include "shell.h"
 
 int main(int argc, char const *argv[])
