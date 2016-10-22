@@ -1,9 +1,7 @@
-/*
-shell.c: Houses the source code for the shell's functions.
-Student Name: Nicholas Macedo
-Student ID: nmacedov
-Student Number: 0889469
-*/ 
+/*************************shell.c****************************************
+Student Name: Nicholas Macedo                  Student Number:
+Date: October 5th 2016                         Course Name: CIS 3110
+****************************************************************************/
 
 #include "shell.h"
 
