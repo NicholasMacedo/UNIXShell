@@ -1,9 +1,7 @@
-/*
-shell.h: Houses the function prototypes of the functions used for the shell's functionality.
-Student Name: Nicholas Macedo
-Student ID: nmacedov
-Student Number: 0889469
-*/ 
+/*************************shell.txt****************************************
+Student Name: Nicholas Macedo                  Student Number:
+Date: October 5th 2016                         Course Name: CIS 3110
+****************************************************************************/
 
 #ifndef shell_H
 #define shell_H
