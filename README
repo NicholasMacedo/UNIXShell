@@ -1,20 +1,10 @@
-/*
-README: Gives sources used and explains what program does.
-Student Name: Nicholas Macedo
-Student ID: nmacedov
-Student Number: 0889469
-*/ 
+/*************************README.txt****************************
+Student Name: Nicholas Macedo                  Student Number:
+Date: October 5th 2016                         Course Name: CIS 3110
+****************************************************************************/
 
 CIS 3110 Assignment 1: Writing a Shell
 
-                    ======Sources Used======
-    The sources used were the following websites:
-    1) http://stephen-brennan.com/2015/01/16/write-a-shell-in-c/ (Used for overall understanding of a Shell. 30% Copy of ideas and logic flow.)
-    2) http://stackoverflow.com/questions/19429138/append-to-the-end-of-a-file-in-c (Understand how to append to a file. 2%)
-    3) https://www.quora.com/Unix/How-can-I-write-a-code-for-PIPE-in-C-shell-script-python (Understand how to do Section 2 parts 3 and 4. 10%)
-    4) http://linux.die.net/man/3/chdir (Used to understand how to change directories. 5%)
-    5) https://www.ibiblio.org/pub/languages/fortran/append-c.html (Used to understand . 3%)
-    
 
                     ======Overall Description======
     This program creates a shell that allows the user to type commands and acts like the command line.
