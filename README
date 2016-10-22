@@ -1,0 +1,100 @@
+/*
+README: Gives sources used and explains what program does.
+Student Name: Nicholas Macedo
+Student ID: nmacedov
+Student Number: 0889469
+*/ 
+
+CIS 3110 Assignment 1: Writing a Shell
+
+                    ======Sources Used======
+    The sources used were the following websites:
+    1) http://stephen-brennan.com/2015/01/16/write-a-shell-in-c/ (Used for overall understanding of a Shell. 30% Copy of ideas and logic flow.)
+    2) http://stackoverflow.com/questions/19429138/append-to-the-end-of-a-file-in-c (Understand how to append to a file. 2%)
+    3) https://www.quora.com/Unix/How-can-I-write-a-code-for-PIPE-in-C-shell-script-python (Understand how to do Section 2 parts 3 and 4. 10%)
+    4) http://linux.die.net/man/3/chdir (Used to understand how to change directories. 5%)
+    5) https://www.ibiblio.org/pub/languages/fortran/append-c.html (Used to understand . 3%)
+    
+
+                    ======Overall Description======
+    This program creates a shell that allows the user to type commands and acts like the command line.
+    What sections are implemented can be found in the "Assignment Implementation" section below.
+    
+        
+                    ======Running The Shell======
+    The shell can br run by simply unzipping the given file and typing "make" when you are in the directory.
+    Upon typing "make" into the terminal, an execuatble called "CIS3110sh" will be created and the shell 
+    can be run by typing "./CIS3110sh" into the terminal.
+   
+
+                    ======Assignment Implementation======
+    The following sections have been implemented to the extent that has been explained below. The test cases used to test each case can be
+    found under the "Shell Testing" catagory. 
+    
+    =-= Section 1 =-=
+        Part 1: Exiting the shell can be done by entering "exit". Then program, upon exiting, kills any process running in the background.
+        Part 2: Commands with no arguments have been accounted for and tested using the following tests below.
+        Part 3: Commands wit arguments have also been included and have been tested using the following tests below.
+        Part 4: Background processes were implemented but sigaction was NOT used due to complications from -Wall.
+
+    =-= Section 2 =-=
+        Part 1 (Numbered as 3): Implemented to my understanding using dup2 and freopen. Somewhat tested. Not really understood 100% but enough to code it.
+        Part 2 (Numbered as 4): Implemented using only freopen. Somewhat tested. Not really understood 100% but enough to code it.
+        Part 3 (Numbered as 5): *** !!! NOT INCLUDED !!! ***
+    =-= Section 3 =-=
+        Part 1: Implemented using the understandings in the "Shell Known Limitations" section.
+        Part 2: *** !!! NOT INCLUDED !!! ***
+        Part 3: Implemented using the understandings in the "Shell Known Limitations" section.
+
+
+                    ======Shell Known Limitations======
+    Each known limitation is discussed in the respective sections. 
+    =-= Section 1 =-=
+        Part 1: When killing a process the process is not fully destroyed but put into a <defunct> state. This was found out by not actually
+                exiting the program after typing exit and being able to type PS. To my understanding, the process is not wokring but is in the
+                zombie "terminated" state.
+        Part 2: If a command is typo'd, bash autopmatically has a response but my program also respoinds saying its an incorrect command.
+        Part 3: If a command is typo'd, bash autopmatically has a response but my program also respoinds saying its an incorrect command. Also,
+                testing if parts 2,3,4 work are tricky due to now knowing many commands to test it on.
+        Part 4: Due to the code given to use by the TA being unable to compule without warnings on longbottom, this section was hard to implement
+                thus the removal of thw waitpid in the parent acts as a "background" process and sigaction was not used. 
+
+    =-= Section 2 =-=
+        Part 1 (Numbered as 3): Not much is understood so no known limitations is know for this. I ran the command and it segfaulted 1/15 times. I dont know why.
+        Part 2 (Numbered as 4): Not much is understood so no known limitations is know for this. I ran the command and it segfaulted 1/12 times. I dont know why.
+        ** The above managed to segfault in their test but worked for the other tests that mimiced the same situation. I am unaware as to why it segfaulted. **
+
+    =-= Section 3 =-=
+        Part 1: This section was tricky to understand but from what I understood is that we had to program the three variables below.
+            $PATH: Is the same as typing "getconf PATH" into the terminal thus it was simulated that the user did so.
+            $HISTFILE: Displays the file path to the.CIS3110_history file for the shell. Which would be the CWD plus the file name added to it.
+            $HOME: Displays the CWD for the shell. This can be known by saving the location of the getrcwd right in the beginning of the program.
+        Part 3:
+            History: History shows the commands that the user typed. It has three types. "history" which displays everything. "history #" that displays the given
+                     number and "history -c" which clears the file. When a file is cleared the history -c command is the first thing in the file.
+            CD: Works for changing directories. Known limitation is that it cannot go to far from the main directory but it has been tested to go as far as the
+                desktop. (3 foulders out.)
+                   
+
+                    ======Shell Testing======
+    Each section of the shell was tested to check for functionality. Test cases are described below.
+    =-= Section 1 =-=
+        Part 1: Tested by typing exit and checking if program exits. Also tested to see if background processes are being exited by
+                not actually exiting the while loop and being able to continue typing. Can only be tested if the vbariable in the exit area is changed.
+        Part 2: This was tested by typing many of the known commands. Eg. ls, ps, clear, dir, df and reset
+        Part 3: This was tested by typing all the commands I know. Eg. ls -l, ls -a, ls -la, ps -l, sleep 4, man printf and nano test.txt
+        Part 4: This was tested by typing one commmand with various amounts of time. Hard to test due to not knowing when to use. Eg. sleep 4 & and sleep 100 &
+                The example of xemacs was given but that causes the shell to behave weird due to me not understanding what it does.
+
+     =-= Section 2 =-=  
+        Part 1: Tested by typing a command into the first part followed by a file that is created and not created after it. Eg. ls -al > test.txt
+        Part 2: Tested by creating a file with strings in it and using the command sort < testFile.txt to see if it worked. It does. Eg. sort < testFile.txt
+
+     =-= Section 3 =-=
+         Part 1: The program will display the variables when the user types $PATH, echo $PATH, $HISTFILE, echo $HISTFILE, $HOME and echo $HOME
+         Part 3:
+             History: The history was hard to test but it works. When entering a number it prints that many. If a neg number is given it produces an error.
+                      The history did have one case where it did produce a glib error but that was never reproduced again so cause is unknown.
+             CD: Was tested to go up and down a directory. Testing for entering directories that dont exist and items that arent a directory was also a case. 
+    Test cases can be found in the foulder "TestCases.tar.gz" provided with the assignment.
+    All tests were preformed on the longbottom server and did not provide an error unless specified. 
